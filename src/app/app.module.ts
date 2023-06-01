@@ -13,6 +13,7 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
 import { MatCardModule} from '@angular/material/card';
+import { NewsListComponent } from './components/news/news-list/news-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatCardModule} from '@angular/material/card';
     NewsComponent,
     NavbarComponent,
     PlacesComponent,
-    HomeComponent
+    HomeComponent,
+    NewsListComponent
   ],
   imports: [
     BrowserModule,
