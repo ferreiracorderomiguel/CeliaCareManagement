@@ -1,0 +1,16 @@
+.card {
+    max-width: 400px;
+    background-color: rgb(238, 238, 238);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+    margin-top: 2%;
+}
+
+button:hover {
+    background-color: rgb(255, 187, 60);;
+}
