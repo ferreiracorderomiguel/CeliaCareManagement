@@ -1,1 +1,31 @@
-<p>home works!</p>
+<div class="cards-container">
+  <mat-card class="card">
+    <img mat-card-image src="assets/Icono_inicio_1.png" />
+    <mat-card-header>
+      <mat-card-title>Establecimientos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Establecimientos adheridos a CeliaCare</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="primary" [routerLink]="'/places'">
+        Ir a establecimientos
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="card">
+    <img mat-card-image src="assets/Icono_inicio_2.png" />
+    <mat-card-header>
+      <mat-card-title>Noticias</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Noticias del mundo celiaco</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button color="primary" [routerLink]="'/news'">
+        Ir a noticias
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
