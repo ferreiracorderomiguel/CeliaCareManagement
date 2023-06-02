@@ -13,7 +13,11 @@ import { MatButtonModule} from '@angular/material/button';
 import { MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
 import { MatCardModule} from '@angular/material/card';
-import { NewsListComponent } from './components/news/news-list/news-list.component';
+import { EditNewsComponent } from './components/news/edit-news/edit-news.component';
+import { NewNewsComponent } from './components/news/new-news/new-news.component';
+import { ViewNewsComponent } from './components/news/view-news/view-news.component';
+import { NewsService } from './services/news-service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,9 @@ import { NewsListComponent } from './components/news/news-list/news-list.compone
     NavbarComponent,
     PlacesComponent,
     HomeComponent,
-    NewsListComponent
+    EditNewsComponent,
+    NewNewsComponent,
+    ViewNewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +38,10 @@ import { NewsListComponent } from './components/news/news-list/news-list.compone
     MatListModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [NewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
