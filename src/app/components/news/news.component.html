@@ -1,7 +1,10 @@
 <div class="container mt-4">
   <div class="card">
     <div class="card-body">
-      <span class="h3">Lista de noticias</span>
+      <div>
+        <span class="h3">Lista de noticias</span>
+        <p class="btn btn-outline-primary float-right" [routerLink]="'/new-news'">Crear noticia</p>
+      </div>
       <table class="table table-striped mt-2">
         <thead>
           <tr>
@@ -9,16 +12,20 @@
             <th>Contenido</th>
             <th>Imagen</th>
             <th>Fecha publicación</th>
-            <th></th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Benito Vaquero</td>
-            <td>sssss</td>
-            <td>ssss</td>
-            <td>01/06/2023</td>
-            <td></td>
+          <tr *ngFor="let news of listNews">
+            <td>{{news.title}}</td>
+            <td>{{news.description}}</td>
+            <td>{{news.image}}</td>
+            <td>{{news.date}}</td>
+            <td><table>
+              <td><button mat-raised-button color="accent" [routerLink]="'/edit-news'">Editar</button></td>
+              <td></td><button mat-raised-button color="primary">Ver</button><td></td>
+              <td><button mat-raised-button color="warn" (click)="deleteNews()">Eliminar</button></td>
+            </table></td>
           </tr>
         </tbody>
       </table>
