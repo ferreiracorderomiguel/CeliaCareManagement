@@ -3,7 +3,7 @@
     <div class="card-body">
       <div>
         <span class="h3">Lista de noticias</span>
-        <p class="btn btn-outline-primary float-right" [routerLink]="'/new-news'">Crear noticia</p>
+        <p class="btn btn-outline-primary" (click)="openDialogNewNews()">Crear noticia</p>
       </div>
       <table class="table table-striped mt-2">
         <thead>
