@@ -18,6 +18,9 @@ import { NewNewsComponent } from './components/news/new-news/new-news.component'
 import { ViewNewsComponent } from './components/news/view-news/view-news.component';
 import { NewsService } from './services/news-service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]
