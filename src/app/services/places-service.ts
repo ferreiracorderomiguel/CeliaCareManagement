@@ -25,6 +25,6 @@ export class PlacesService {
 
   addPlace(place: Place) {
     this.listPlaces.push(place);
-    //this.firebaseService.uploadPlaces(this.listPlaces);
+    this.firebaseService.uploadPlaces(this.listPlaces);
   }
 }

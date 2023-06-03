@@ -1,10 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { News } from '../models/news';
+import { NotifierService } from './notifier-service';
 
 @Injectable()
 export class FirebaseService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private notifierService: NotifierService
+  ) {}
 
   uploadNews(newsArray: News[]) {
     this.httpClient
@@ -15,6 +19,28 @@ export class FirebaseService {
       .subscribe(
         (response) => console.log('Se ha subido la noticia a Firebase'),
         (error) => console.log('Error al subir la noticia a Firebase: ' + error)
+      );
+  }
+
+  uploadPlaces(placesArray: any[]) {
+    this.httpClient
+      .post(
+        'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json',
+        placesArray
+      )
+      .subscribe(
+        (response) => {
+          this.notifierService.showNotification(
+            'Se ha subido el establecimiento a Firebase',
+            'Aceptar'
+          );
+        },
+        (error) => {
+          this.notifierService.showNotification(
+            'Error al subir el establecimiento a Firebase: ' + error,
+            'Aceptar'
+          );
+        }
       );
   }
 }
