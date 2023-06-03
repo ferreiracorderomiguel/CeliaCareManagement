@@ -8,15 +8,6 @@ export class PlacesService {
   constructor(private firebaseService: FirebaseService) {}
 
   listPlaces: Place[] = [];
-  /*listPlaces: Place[] = [
-    new Place('Pirri', 'Toodo mu rico', 'Imagen', '03/06/2023 19:50'),
-    new Place(
-      'Taurina',
-      'La limpieza deja que desear',
-      'Imagen',
-      '03/06/2023 19:50'
-    ),
-  ];*/
 
   getPlaces() {
     this.getPlacesConverter().subscribe((places: Place[]) => {

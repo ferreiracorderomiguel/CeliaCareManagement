@@ -32,6 +32,12 @@ export class FirebaseService {
       );
   }
 
+  getNews() {
+    return this.httpClient.get(
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json'
+    );
+  }
+
   uploadPlaces(placesArray: any[]) {
     this.httpClient
       .put(
