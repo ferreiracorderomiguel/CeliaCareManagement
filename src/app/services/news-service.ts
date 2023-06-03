@@ -5,10 +5,7 @@ import { FirebaseService } from './firebase-service';
 
 @Injectable()
 export class NewsService {
-  constructor(
-    private httpClient: HttpClient,
-    private firebaseService: FirebaseService
-  ) {}
+  constructor(private firebaseService: FirebaseService) {}
 
   listNews: News[] = [
     new News('Hola', 'Lo que pasa', 'Imagen', '03/06/2023 11:00'),
@@ -17,18 +14,6 @@ export class NewsService {
   ];
 
   getNews() {
-    this.httpClient
-      .get<News[]>(
-        'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json'
-      )
-      .subscribe(
-        (response) => {
-          this.listNews = response;
-        },
-        (error) => {
-          console.log('Error al recuperar noticias');
-        }
-      );
     return this.listNews;
   }
 

@@ -32,7 +32,6 @@ export class NewNewsComponent {
       this.dateTimeString
     );
 
-    console.log(newNews);
     this.newsService.addNews(newNews);
 
     this.dialogRef.close(true);

@@ -22,4 +22,9 @@ export class PlacesService {
       .subscribe((response) => (this.listPlaces = response));*/
     return this.listPlaces;
   }
+
+  addPlace(place: Place) {
+    this.listPlaces.push(place);
+    //this.firebaseService.uploadPlaces(this.listPlaces);
+  }
 }
