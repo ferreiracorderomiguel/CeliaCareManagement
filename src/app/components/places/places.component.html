@@ -1,1 +1,63 @@
-<p>places works!</p>
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <div class="title-button-containers">
+        <div class="title-container">
+          <span class="h1">Lista de establecimientos</span>
+        </div>
+        <div class="button-container">
+          <button
+            class="btn btn-outline-primary"
+            (click)="openDialogNewPlace()"
+          >
+            Crear establecimiento
+          </button>
+        </div>
+      </div>
+      <table class="table table-striped mt-2">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Imagen</th>
+            <th>Fecha publicación</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let place of listPlaces">
+            <td>{{ place.name }}</td>
+            <td>{{ place.description }}</td>
+            <td>{{ place.image }}</td>
+            <td>{{ place.date }}</td>
+            <td>
+              <table>
+                <td>
+                  <button
+                    mat-raised-button
+                    class="btn-editar"
+                    [routerLink]="'/edit-news'"
+                  >
+                    Editar
+                  </button>
+                </td>
+                <td>
+                  <button mat-raised-button class="btn-ver">Ver</button>
+                </td>
+                <td>
+                  <button
+                    mat-raised-button
+                    color="warn"
+                    (click)="deletePlace()"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,11 @@ import { NotifierService } from 'src/app/services/notifier-service';
 export class NewsComponent implements OnInit {
   listNews: News[] = [];
 
-  constructor(public dialog: MatDialog, private newsService: NewsService, private notifierService: NotifierService) {}
+  constructor(
+    public dialog: MatDialog,
+    private newsService: NewsService,
+    private notifierService: NotifierService
+  ) {}
 
   ngOnInit() {
     this.getNews();
@@ -32,7 +36,10 @@ export class NewsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log('creao');
-        this.notifierService.showNotification('Noticia creada correctamente', 'Aceptar');
+        this.notifierService.showNotification(
+          'Noticia creada correctamente',
+          'Aceptar'
+        );
         this.getNews();
       }
     });
