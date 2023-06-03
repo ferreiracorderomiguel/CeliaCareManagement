@@ -1,10 +1,11 @@
-<div mat-dialog-content>{{title}}
-    
-</div>
-<mat-form-field>
+<div mat-dialog-title>{{title}}</div>
+<div mat-dialog-content>
+  <mat-form-field>
     <mat-label>What's your name?</mat-label>
     <input matInput [(ngModel)]="name">
   </mat-form-field>
+</div>
+
 <div mat-dialog-actions>
     <button mat-button (click)="closeDialog()">Cancelar</button>
     <button mat-button (click)="createNews()">Crear</button>

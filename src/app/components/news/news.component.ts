@@ -25,7 +25,7 @@ export class NewsComponent {
 
   openDialogNewNews(){
     const dialogRef = this.dialog.open(NewNewsComponent, {
-      width: '250px',
+      width: '500px',
       data: "Crear noticia"
     });
 
