@@ -9,10 +9,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PlacesComponent } from './components/places/places.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
-import { MatButtonModule} from '@angular/material/button';
-import { MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
-import { MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { EditNewsComponent } from './components/news/edit-news/edit-news.component';
 import { NewNewsComponent } from './components/news/new-news/new-news.component';
 import { ViewNewsComponent } from './components/news/view-news/view-news.component';
@@ -21,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { PlacesService } from './services/places-service';
+import { FirebaseService } from './services/firebase-service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { MatInputModule} from '@angular/material/input';
     FormsModule,
     MatInputModule,
   ],
-  providers: [NewsService],
-  bootstrap: [AppComponent]
+  providers: [NewsService, PlacesService, FirebaseService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

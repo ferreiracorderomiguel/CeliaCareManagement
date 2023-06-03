@@ -1,43 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news';
 import { NewNewsComponent } from './new-news/new-news.component';
+import { NewsService } from 'src/app/services/news-service';
 
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  styleUrls: ['./news.component.css'],
 })
-export class NewsComponent {
+export class NewsComponent implements OnInit {
+  listNews: News[] = [];
 
-  listNews: News[] = [
-    {
-      id: 1,
-      title: "Turquía",
-      description: "Yonki ya te toca",
-      image: "Imagen que no vea",
-      date: "02/06/2023"
-    }
-  ];
+  constructor(public dialog: MatDialog, private newsService: NewsService) {}
 
-  constructor(public dialog: MatDialog,
-    ) { }
+  ngOnInit() {
+    this.getNews();
+  }
 
-  openDialogNewNews(){
+  getNews() {
+    this.listNews = this.newsService.getNews();
+  }
+
+  openDialogNewNews() {
     const dialogRef = this.dialog.open(NewNewsComponent, {
       width: '500px',
-      data: "Crear noticia"
+      data: 'Crear noticia',
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        console.log("creao");
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('creao');
+        this.getNews();
       }
     });
   }
 
-  deleteNews(){
-    
-  }
-
+  deleteNews() {}
 }

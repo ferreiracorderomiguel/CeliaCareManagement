@@ -1,8 +1,16 @@
-<div mat-dialog-title>{{title}}</div>
+<div mat-dialog-title>{{modalTitle}}</div>
 <div mat-dialog-content>
   <mat-form-field>
-    <mat-label>What's your name?</mat-label>
-    <input matInput [(ngModel)]="name">
+    <mat-label>Título de la noticia</mat-label>
+    <input matInput [(ngModel)]="title">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Contenido de la noticia</mat-label>
+    <textarea matInput [(ngModel)]="description"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Imagen</mat-label>
+    <input matInput [(ngModel)]="image">
   </mat-form-field>
 </div>
 
