@@ -24,6 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { PlacesService } from './services/places-service';
 import { FirebaseService } from './services/firebase-service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NotifierService } from './services/notifier-service';
 
 @NgModule({
   declarations: [
@@ -50,8 +52,9 @@ import { FirebaseService } from './services/firebase-service';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
+    MatSnackBarModule,
   ],
-  providers: [NewsService, PlacesService, FirebaseService],
+  providers: [NewsService, PlacesService, FirebaseService, NotifierService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

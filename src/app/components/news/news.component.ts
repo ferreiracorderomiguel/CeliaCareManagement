@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news';
 import { NewNewsComponent } from './new-news/new-news.component';
 import { NewsService } from 'src/app/services/news-service';
+import { NotifierService } from 'src/app/services/notifier-service';
 
 @Component({
   selector: 'app-news',
@@ -12,7 +13,7 @@ import { NewsService } from 'src/app/services/news-service';
 export class NewsComponent implements OnInit {
   listNews: News[] = [];
 
-  constructor(public dialog: MatDialog, private newsService: NewsService) {}
+  constructor(public dialog: MatDialog, private newsService: NewsService, private notifierService: NotifierService) {}
 
   ngOnInit() {
     this.getNews();
@@ -31,6 +32,7 @@ export class NewsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log('creao');
+        this.notifierService.showNotification('Noticia creada correctamente', 'Aceptar');
         this.getNews();
       }
     });
