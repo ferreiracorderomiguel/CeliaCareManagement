@@ -1,9 +1,15 @@
 <div class="container mt-4">
   <div class="card">
     <div class="card-body">
-      <div>
-        <span class="h3">Lista de noticias</span>
-        <p class="btn btn-outline-primary" (click)="openDialogNewNews()">Crear noticia</p>
+      <div class="title-button-containers">
+        <div class="title-container">
+          <span class="h1">Lista de noticias</span>
+        </div>
+        <div class="button-container">
+          <button class="btn btn-outline-primary" (click)="openDialogNewNews()">
+            Crear noticia
+          </button>
+        </div>
       </div>
       <table class="table table-striped mt-2">
         <thead>
@@ -17,15 +23,31 @@
         </thead>
         <tbody>
           <tr *ngFor="let news of listNews">
-            <td>{{news.title}}</td>
-            <td>{{news.description}}</td>
-            <td>{{news.image}}</td>
-            <td>{{news.date}}</td>
-            <td><table>
-              <td><button mat-raised-button style="background-color: #1d86cc; color: white;" [routerLink]="'/edit-news'">Editar</button></td>
-              <td><button mat-raised-button style="background-color: #019b28; color: white;">Ver</button></td>
-              <td><button mat-raised-button color="warn" (click)="deleteNews()">Eliminar</button></td>
-            </table></td>
+            <td>{{ news.title }}</td>
+            <td>{{ news.description }}</td>
+            <td>{{ news.image }}</td>
+            <td>{{ news.date }}</td>
+            <td>
+              <table>
+                <td>
+                  <button
+                    mat-raised-button
+                    class="btn-editar"
+                    [routerLink]="'/edit-news'"
+                  >
+                    Editar
+                  </button>
+                </td>
+                <td>
+                  <button mat-raised-button class="btn-ver">Ver</button>
+                </td>
+                <td>
+                  <button mat-raised-button color="warn" (click)="deleteNews()">
+                    Eliminar
+                  </button>
+                </td>
+              </table>
+            </td>
           </tr>
         </tbody>
       </table>
