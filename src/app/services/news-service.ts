@@ -1,20 +1,26 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { News } from '../models/news';
 import { FirebaseService } from './firebase-service';
+import { Observable, map } from 'rxjs';
 
 @Injectable()
 export class NewsService {
   constructor(private firebaseService: FirebaseService) {}
 
-  listNews: News[] = [
-    new News('Hola', 'Lo que pasa', 'Imagen', '03/06/2023 11:00'),
-    new News('Adios', 'Lo que pasa', 'Imagen', '04/06/2023 12:00'),
-    new News('AAAA', 'Lo que pasa', 'Imagen', '05/06/2023 13:00'),
-  ];
+  listNews: News[] = [];
 
   getNews() {
+    this.getNewsConverter().subscribe((news: News[]) => {
+      this.listNews = news;
+    });
+
     return this.listNews;
+  }
+
+  getNewsConverter(): Observable<News[]> {
+    return this.firebaseService
+      .getNews()
+      .pipe(map((data: any) => Object.values(data) as News[]));
   }
 
   addNews(news: News) {
