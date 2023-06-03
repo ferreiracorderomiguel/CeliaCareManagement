@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatDialogModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]
