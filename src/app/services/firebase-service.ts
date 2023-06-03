@@ -12,19 +12,29 @@ export class FirebaseService {
 
   uploadNews(newsArray: News[]) {
     this.httpClient
-      .post(
+      .put(
         'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json',
         newsArray
       )
       .subscribe(
-        (response) => console.log('Se ha subido la noticia a Firebase'),
-        (error) => console.log('Error al subir la noticia a Firebase: ' + error)
+        (response) => {
+          this.notifierService.showNotification(
+            'Se ha subido la noticia a Firebase',
+            'Aceptar'
+          );
+        },
+        (error) => {
+          this.notifierService.showNotification(
+            'Error al subir la noticia a Firebase: ' + error,
+            'Aceptar'
+          );
+        }
       );
   }
 
   uploadPlaces(placesArray: any[]) {
     this.httpClient
-      .post(
+      .put(
         'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json',
         placesArray
       )
@@ -42,5 +52,11 @@ export class FirebaseService {
           );
         }
       );
+  }
+
+  getPlaces() {
+    return this.httpClient.get(
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json'
+    );
   }
 }

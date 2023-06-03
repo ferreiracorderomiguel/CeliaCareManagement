@@ -35,11 +35,6 @@ export class NewsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log('creao');
-        this.notifierService.showNotification(
-          'Noticia creada correctamente',
-          'Aceptar'
-        );
         this.getNews();
       }
     });
