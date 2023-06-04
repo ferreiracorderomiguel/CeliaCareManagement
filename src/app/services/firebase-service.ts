@@ -39,7 +39,27 @@ export class FirebaseService {
       );
   }
 
-  updateNews(id: number, news: News) {}
+  updateNews(id: number, news: News) {
+    let url =
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news/' +
+      id +
+      '.json';
+
+    this.httpClient.put(url, news).subscribe(
+      (response) => {
+        this.notifierService.showNotification(
+          'Se ha actualizado la noticia en Firebase',
+          'Aceptar'
+        );
+      },
+      (error) => {
+        this.notifierService.showNotification(
+          'Error al actualizar la noticia en Firebase: ' + error,
+          'Aceptar'
+        );
+      }
+    );
+  }
 
   deleteNews() {}
 

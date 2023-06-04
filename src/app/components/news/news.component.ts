@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news';
 import { NewNewsComponent } from './new-news/new-news.component';
 import { NewsService } from 'src/app/services/news-service';
+import { EditNewsComponent } from './edit-news/edit-news.component';
 
 @Component({
   selector: 'app-news',
@@ -29,6 +30,19 @@ export class NewsComponent implements OnInit {
     const dialogRef = this.dialog.open(NewNewsComponent, {
       width: '500px',
       data: 'Crear noticia',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getNews();
+      }
+    });
+  }
+
+  openDialogEditNews(newsId: number) {
+    const dialogRef = this.dialog.open(EditNewsComponent, {
+      width: '500px',
+      data: { modalTitle: 'Editar noticia', newsId: newsId },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

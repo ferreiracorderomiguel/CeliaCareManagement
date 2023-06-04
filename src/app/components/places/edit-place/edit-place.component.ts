@@ -29,10 +29,10 @@ export class EditPlaceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPlace();
+    this.getPlaceById(this.placeId);
   }
 
-  getPlace() {}
+  getPlaceById(placeId: number) {}
 
   editPlace() {
     this.getActualDate();
@@ -43,6 +43,7 @@ export class EditPlaceComponent implements OnInit {
       this.image,
       this.dateTimeString
     );
+
     this.placesService.updatePlace(this.placeId, newPlace);
 
     this.dialogRef.close(true);
