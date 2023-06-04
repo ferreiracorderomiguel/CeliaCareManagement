@@ -29,10 +29,19 @@ export class EditPlaceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPlaceById(this.placeId);
+    this.loadPlacesData();
   }
 
-  getPlaceById(placeId: number) {}
+  loadPlacesData() {
+    const place: Place = this.getPlaceById(this.placeId);
+    this.name = place.name;
+    this.description = place.description;
+    this.image = place.image;
+  }
+
+  getPlaceById(placeId: number) {
+    return this.placesService.getPlaceById(placeId);
+  }
 
   editPlace() {
     this.getActualDate();

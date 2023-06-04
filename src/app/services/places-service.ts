@@ -16,6 +16,10 @@ export class PlacesService {
     return this.firebaseService.getPlaces();
   }
 
+  getPlaceById(id: number) {
+    return this.listPlaces[id];
+  }
+
   addPlace(place: Place) {
     this.listPlaces.push(place);
     this.firebaseService.uploadPlaces(this.listPlaces);
