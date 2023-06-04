@@ -31,4 +31,10 @@ export class PlacesService {
 
     this.firebaseService.updatePlace(id, modifiedPlace);
   }
+
+  deletePlace(id: number) {
+    this.listPlaces.splice(id, 1);
+    this.firebaseService.deletePlace(id);
+    this.firebaseService.uploadPlaces(this.listPlaces);
+  }
 }
