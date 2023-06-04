@@ -22,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let news of listNews">
+          <tr *ngFor="let news of listNews; let i = index">
             <td>{{ news.title }}</td>
             <td>{{ news.description }}</td>
             <td>{{ news.image }}</td>
@@ -33,7 +33,7 @@
                   <button
                     mat-raised-button
                     class="btn-editar"
-                    [routerLink]="'/edit-news'"
+                    (click)="openDialogEditNews(i)"
                   >
                     Editar
                   </button>

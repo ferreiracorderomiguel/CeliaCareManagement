@@ -20,4 +20,15 @@ export class NewsService {
   setNews(news: News[]) {
     this.listNews = news;
   }
+
+  updateNews(id: number, news: News) {
+    let modifiedNews = this.listNews[id];
+
+    modifiedNews.title = news.title;
+    modifiedNews.description = news.description;
+    modifiedNews.image = news.image;
+    modifiedNews.date = news.date;
+
+    this.firebaseService.updateNews(id, modifiedNews);
+  }
 }
