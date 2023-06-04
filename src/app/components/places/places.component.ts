@@ -24,7 +24,10 @@ export class PlacesComponent implements OnInit {
   }
 
   getPlaces() {
-    this.listPlaces = this.placesService.getPlaces();
+    this.placesService.getPlaces().subscribe((places) => {
+      this.listPlaces = Object.values(places);
+      this.placesService.setPlaces(this.listPlaces);
+    });
   }
 
   openDialogNewPlace() {

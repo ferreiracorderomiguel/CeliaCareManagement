@@ -10,21 +10,15 @@ export class PlacesService {
   listPlaces: Place[] = [];
 
   getPlaces() {
-    this.getPlacesConverter().subscribe((places: Place[]) => {
-      this.listPlaces = places;
-    });
-
-    return this.listPlaces;
-  }
-
-  getPlacesConverter(): Observable<Place[]> {
-    return this.firebaseService
-      .getPlaces()
-      .pipe(map((data: any) => Object.values(data) as Place[]));
+    return this.firebaseService.getPlaces();
   }
 
   addPlace(place: Place) {
     this.listPlaces.push(place);
     this.firebaseService.uploadPlaces(this.listPlaces);
+  }
+
+  setPlaces(places: Place[]) {
+    this.listPlaces = places;
   }
 }
