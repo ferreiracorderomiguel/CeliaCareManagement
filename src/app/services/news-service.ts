@@ -31,4 +31,10 @@ export class NewsService {
 
     this.firebaseService.updateNews(id, modifiedNews);
   }
+
+  deleteNews(id: number) {
+    this.listNews.splice(id, 1);
+    this.firebaseService.deleteNews(id);
+    this.firebaseService.uploadNews(this.listNews);
+  }
 }

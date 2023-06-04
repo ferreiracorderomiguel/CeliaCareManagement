@@ -52,5 +52,7 @@ export class NewsComponent implements OnInit {
     });
   }
 
-  deleteNews() {}
+  deleteNews(newsId: number) {
+    this.newsService.deleteNews(newsId);
+  }
 }
