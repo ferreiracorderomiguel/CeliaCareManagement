@@ -38,11 +38,6 @@ export class PlacesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        console.log('creao');
-        this.notifierService.showNotification(
-          'Establecimiento creado correctamente',
-          'Aceptar'
-        );
         this.getPlaces();
       }
     });

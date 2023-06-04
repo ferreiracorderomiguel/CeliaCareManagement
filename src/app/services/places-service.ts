@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Place } from '../models/place';
 import { FirebaseService } from './firebase-service';
-import { Observable, map } from 'rxjs';
 
 @Injectable()
 export class PlacesService {
