@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { News } from '../models/news';
 import { FirebaseService } from './firebase-service';
+import { NotifierService } from './notifier-service';
 
 @Injectable()
 export class NewsService {
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private notifierService: NotifierService
+  ) {}
 
   listNews: News[] = [];
 
@@ -33,8 +37,14 @@ export class NewsService {
   }
 
   deleteNews(id: number) {
-    this.listNews.splice(id, 1);
-    this.firebaseService.deleteNews(id);
-    this.firebaseService.uploadNews(this.listNews);
+    this.notifierService
+      .showConfirmation('¿Desea eliminar la noticia?', 'Aceptar')
+      .subscribe((result) => {
+        if (result.dismissedByAction) {
+          this.listNews.splice(id, 1);
+          this.firebaseService.deleteNews(id);
+          //this.firebaseService.uploadNews(this.listNews);
+        }
+      });
   }
 }
