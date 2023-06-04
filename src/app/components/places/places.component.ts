@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Place } from 'src/app/models/place';
-import { NotifierService } from 'src/app/services/notifier-service';
 import { PlacesService } from 'src/app/services/places-service';
 import { NewPlaceComponent } from './new-place/new-place.component';
+import { EditPlaceComponent } from './edit-place/edit-place.component';
 
 @Component({
   selector: 'app-places',
@@ -13,11 +13,7 @@ import { NewPlaceComponent } from './new-place/new-place.component';
 export class PlacesComponent implements OnInit {
   listPlaces: Place[] = [];
 
-  constructor(
-    public dialog: MatDialog,
-    private placesService: PlacesService,
-    private notifierService: NotifierService
-  ) {}
+  constructor(public dialog: MatDialog, private placesService: PlacesService) {}
 
   ngOnInit(): void {
     this.getPlaces();
@@ -43,5 +39,18 @@ export class PlacesComponent implements OnInit {
     });
   }
 
-  deletePlace() {}
+  openDialogEditPlace(placeId: number) {
+    const dialogRef = this.dialog.open(EditPlaceComponent, {
+      width: '500px',
+      data: { modalTitle: 'Editar establecimiento', placeId: placeId },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.getPlaces();
+      }
+    });
+  }
+
+  deletePlace(placeId: number) {}
 }

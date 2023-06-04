@@ -27,6 +27,7 @@ import { FirebaseService } from './services/firebase-service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotifierService } from './services/notifier-service';
 import { NewPlaceComponent } from './components/places/new-place/new-place.component';
+import { EditPlaceComponent } from './components/places/edit-place/edit-place.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { NewPlaceComponent } from './components/places/new-place/new-place.compo
     NewNewsComponent,
     ViewNewsComponent,
     NewPlaceComponent,
+    EditPlaceComponent,
   ],
   imports: [
     BrowserModule,

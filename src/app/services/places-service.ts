@@ -20,4 +20,15 @@ export class PlacesService {
   setPlaces(places: Place[]) {
     this.listPlaces = places;
   }
+
+  updatePlace(id: number, place: Place) {
+    let modifiedPlace = this.listPlaces[id];
+
+    modifiedPlace.name = place.name;
+    modifiedPlace.description = place.description;
+    modifiedPlace.image = place.image;
+    modifiedPlace.date = place.date;
+
+    this.firebaseService.updatePlace(id, modifiedPlace);
+  }
 }

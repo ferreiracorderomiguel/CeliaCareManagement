@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { News } from 'src/app/models/news';
 import { NewNewsComponent } from './new-news/new-news.component';
 import { NewsService } from 'src/app/services/news-service';
-import { NotifierService } from 'src/app/services/notifier-service';
 
 @Component({
   selector: 'app-news',
@@ -13,11 +12,7 @@ import { NotifierService } from 'src/app/services/notifier-service';
 export class NewsComponent implements OnInit {
   listNews: News[] = [];
 
-  constructor(
-    public dialog: MatDialog,
-    private newsService: NewsService,
-    private notifierService: NotifierService
-  ) {}
+  constructor(public dialog: MatDialog, private newsService: NewsService) {}
 
   ngOnInit() {
     this.getNews();

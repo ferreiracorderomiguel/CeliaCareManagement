@@ -25,7 +25,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let place of listPlaces">
+          <tr *ngFor="let place of listPlaces; let i = index">
             <td>{{ place.name }}</td>
             <td>{{ place.description }}</td>
             <td>{{ place.image }}</td>
@@ -36,7 +36,7 @@
                   <button
                     mat-raised-button
                     class="btn-editar"
-                    [routerLink]="'/edit-news'"
+                    (click)="openDialogEditPlace(i)"
                   >
                     Editar
                   </button>
@@ -48,7 +48,7 @@
                   <button
                     mat-raised-button
                     color="warn"
-                    (click)="deletePlace()"
+                    (click)="deletePlace(i)"
                   >
                     Eliminar
                   </button>
