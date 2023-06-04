@@ -16,6 +16,10 @@ export class NewsService {
     return this.firebaseService.getNews();
   }
 
+  getNewsById(id: number) {
+    return this.listNews[id];
+  }
+
   addNews(news: News) {
     this.listNews.push(news);
     this.firebaseService.uploadNews(this.listNews);

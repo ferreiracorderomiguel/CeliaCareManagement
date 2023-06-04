@@ -29,10 +29,19 @@ export class EditNewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getNewsById(this.newsId);
+    this.loadNewsData();
   }
 
-  getNewsById(newsId: number) {}
+  loadNewsData() {
+    const news: News = this.getNewsById(this.newsId);
+    this.title = news.title;
+    this.description = news.description;
+    this.image = news.image;
+  }
+
+  getNewsById(newsId: number) {
+    return this.newsService.getNewsById(newsId);
+  }
 
   editNews() {
     this.getActualDate();
