@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Place } from '../models/place';
 import { FirebaseService } from './firebase-service';
+import { NotifierService } from './notifier-service';
 
 @Injectable()
 export class PlacesService {
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private notifierService: NotifierService
+  ) {}
 
   listPlaces: Place[] = [];
 
@@ -33,8 +37,14 @@ export class PlacesService {
   }
 
   deletePlace(id: number) {
-    this.listPlaces.splice(id, 1);
-    this.firebaseService.deletePlace(id);
-    this.firebaseService.uploadPlaces(this.listPlaces);
+    this.notifierService
+      .showConfirmation('¿Desea eliminar el establecimiento?', 'Aceptar')
+      .subscribe((result) => {
+        if (result.dismissedByAction) {
+          this.listPlaces.splice(id, 1);
+          this.firebaseService.deletePlace(id);
+          //this.firebaseService.uploadPlaces(this.listPlaces);
+        }
+      });
   }
 }
