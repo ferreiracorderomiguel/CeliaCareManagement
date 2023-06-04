@@ -133,5 +133,25 @@ export class FirebaseService {
     );
   }
 
-  deletePlaces() {}
+  deletePlace(id: number) {
+    let url =
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places/' +
+      id +
+      '.json';
+
+    this.httpClient.delete(url).subscribe(
+      (response) => {
+        this.notifierService.showNotification(
+          'Se ha eliminado el establecimiento en Firebase',
+          'Aceptar'
+        );
+      },
+      (error) => {
+        this.notifierService.showNotification(
+          'Error al eliminar el establecimiento en Firebase: ' + error,
+          'Aceptar'
+        );
+      }
+    );
+  }
 }

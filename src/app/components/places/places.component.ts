@@ -52,5 +52,7 @@ export class PlacesComponent implements OnInit {
     });
   }
 
-  deletePlace(placeId: number) {}
+  deletePlace(placeId: number) {
+    this.placesService.deletePlace(placeId);
+  }
 }
