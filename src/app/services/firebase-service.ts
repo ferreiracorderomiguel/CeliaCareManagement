@@ -61,7 +61,27 @@ export class FirebaseService {
     );
   }
 
-  deleteNews() {}
+  deleteNews(id: number) {
+    let url =
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news/' +
+      id +
+      '.json';
+
+    this.httpClient.delete(url).subscribe(
+      (response) => {
+        this.notifierService.showNotification(
+          'Se ha eliminado la noticia en Firebase',
+          'Aceptar'
+        );
+      },
+      (error) => {
+        this.notifierService.showNotification(
+          'Error al eliminar la noticia en Firebase: ' + error,
+          'Aceptar'
+        );
+      }
+    );
+  }
 
   getPlaces() {
     return this.httpClient.get(
