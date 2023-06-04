@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { News } from '../models/news';
 import { NotifierService } from './notifier-service';
+import { Place } from '../models/place';
 
 @Injectable()
 export class FirebaseService {
@@ -9,6 +10,12 @@ export class FirebaseService {
     private httpClient: HttpClient,
     private notifierService: NotifierService
   ) {}
+
+  getNews() {
+    return this.httpClient.get(
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json'
+    );
+  }
 
   uploadNews(newsArray: News[]) {
     this.httpClient
@@ -32,9 +39,13 @@ export class FirebaseService {
       );
   }
 
-  getNews() {
+  updateNews(id: number, news: News) {}
+
+  deleteNews() {}
+
+  getPlaces() {
     return this.httpClient.get(
-      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json'
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json'
     );
   }
 
@@ -60,9 +71,27 @@ export class FirebaseService {
       );
   }
 
-  getPlaces() {
-    return this.httpClient.get(
-      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json'
+  updatePlace(id: number, place: Place) {
+    let url =
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places/' +
+      id +
+      '.json';
+
+    this.httpClient.put(url, place).subscribe(
+      (response) => {
+        this.notifierService.showNotification(
+          'Se ha actualizado el establecimiento en Firebase',
+          'Aceptar'
+        );
+      },
+      (error) => {
+        this.notifierService.showNotification(
+          'Error al actualizar el establecimiento en Firebase: ' + error,
+          'Aceptar'
+        );
+      }
     );
   }
+
+  deletePlaces() {}
 }
