@@ -24,7 +24,10 @@ export class NewsComponent implements OnInit {
   }
 
   getNews() {
-    this.listNews = this.newsService.getNews();
+    this.newsService.getNews().subscribe((news) => {
+      this.listNews = Object.values(news);
+      this.newsService.setNews(this.listNews);
+    });
   }
 
   openDialogNewNews() {
