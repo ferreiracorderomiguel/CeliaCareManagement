@@ -48,7 +48,7 @@ export class NewsComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(EditNewsComponent, {
-      width: '500px',
+      width: '600px',
       data: { modalTitle: title, newsId: newsId, opc: opc },
     });
 
