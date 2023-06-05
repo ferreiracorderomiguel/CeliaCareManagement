@@ -3,17 +3,21 @@ import { Injectable } from '@angular/core';
 import { News } from '../models/news';
 import { NotifierService } from './notifier-service';
 import { Place } from '../models/place';
+import { LoginService } from './login-service';
 
 @Injectable()
 export class FirebaseService {
   constructor(
     private httpClient: HttpClient,
-    private notifierService: NotifierService
+    private notifierService: NotifierService,
+    private loginService: LoginService
   ) {}
 
   getNews() {
+    const token = this.loginService.getIdToken();
     return this.httpClient.get(
-      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json'
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json?auth=' +
+        token
     );
   }
 
