@@ -22,7 +22,7 @@ export class NewsService {
 
   addNews(news: News) {
     this.listNews.push(news);
-    this.firebaseService.uploadNews(this.listNews);
+    this.firebaseService.uploadNews(this.listNews, 1);
   }
 
   setNews(news: News[]) {
@@ -47,7 +47,7 @@ export class NewsService {
         if (result.dismissedByAction) {
           this.listNews.splice(id, 1);
           this.firebaseService.deleteNews(id);
-          //this.firebaseService.uploadNews(this.listNews);
+          this.firebaseService.uploadNews(this.listNews, 2);
         }
       });
   }

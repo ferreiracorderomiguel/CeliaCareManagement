@@ -11,58 +11,67 @@
           </button>
         </div>
       </div>
-      <table class="table table-striped mt-2">
-        <thead>
-          <tr>
-            <th>Titulo</th>
-            <th>Contenido</th>
-            <th>Imagen</th>
-            <th>Fecha últ. actualización</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let news of listNews; let i = index">
-            <td>
-              <div class="news-title">{{ news.title }}</div>
-            </td>
-            <td>
-              <div class="news-description">{{ news.description }}</div>
-            </td>
-            <td>
-              <div class="news-image">{{ news.image }}</div>
-            </td>
-            <td>
-              <div class="news-date">{{ news.date }}</div>
-            </td>
-            <td>
-              <table>
-                <td>
-                  <button
-                    mat-raised-button
-                    class="btn-editar"
-                    (click)="openDialogEditNews(i)"
-                  >
-                    Editar
-                  </button>
-                </td>
-                <td>
-                  <button mat-raised-button class="btn-ver">Ver</button>
-                </td>
-                <td>
-                  <button
-                    mat-raised-button
-                    color="warn"
-                    (click)="deleteNews(i)"
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <ng-container *ngIf="listNews.length > 0; else emptyNews">
+        <table class="table table-striped mt-2">
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Contenido</th>
+              <th>Imagen</th>
+              <th>Fecha últ. actualización</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let news of listNews; let i = index">
+              <td>
+                <div class="news-title">{{ news.title }}</div>
+              </td>
+              <td>
+                <div class="news-description">{{ news.description }}</div>
+              </td>
+              <td>
+                <div class="news-image">{{ news.image }}</div>
+              </td>
+              <td>
+                <div class="news-date">{{ news.date }}</div>
+              </td>
+              <td>
+                <table>
+                  <td>
+                    <button
+                      mat-raised-button
+                      class="btn-editar"
+                      (click)="openDialogEditNews(i)"
+                    >
+                      Editar
+                    </button>
+                  </td>
+                  <td>
+                    <button mat-raised-button class="btn-ver">Ver</button>
+                  </td>
+                  <td>
+                    <button
+                      mat-raised-button
+                      color="warn"
+                      (click)="deleteNews(i)"
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+
+      <ng-template #emptyNews>
+        <p class="no-news mt-4">
+          No hay noticias disponibles. Para crear una, pulse el botón 'Crear
+          noticia'.
+        </p>
+      </ng-template>
     </div>
   </div>
 </div>

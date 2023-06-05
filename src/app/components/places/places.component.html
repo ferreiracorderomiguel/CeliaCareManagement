@@ -14,58 +14,67 @@
           </button>
         </div>
       </div>
-      <table class="table table-striped mt-2">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Imagen</th>
-            <th>Fecha últ. actualización</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let place of listPlaces; let i = index">
-            <td>
-              <div class="places-name">{{ place.name }}</div>
-            </td>
-            <td>
-              <div class="places-description">{{ place.description }}</div>
-            </td>
-            <td>
-              <div class="places-image">{{ place.image }}</div>
-            </td>
-            <td>
-              <div class="places-date">{{ place.date }}</div>
-            </td>
-            <td>
-              <table>
-                <td>
-                  <button
-                    mat-raised-button
-                    class="btn-editar"
-                    (click)="openDialogEditPlace(i)"
-                  >
-                    Editar
-                  </button>
-                </td>
-                <td>
-                  <button mat-raised-button class="btn-ver">Ver</button>
-                </td>
-                <td>
-                  <button
-                    mat-raised-button
-                    color="warn"
-                    (click)="deletePlace(i)"
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <ng-container *ngIf="listPlaces.length > 0; else emptyPlaces">
+        <table class="table table-striped mt-2">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Imagen</th>
+              <th>Fecha últ. actualización</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let place of listPlaces; let i = index">
+              <td>
+                <div class="places-name">{{ place.name }}</div>
+              </td>
+              <td>
+                <div class="places-description">{{ place.description }}</div>
+              </td>
+              <td>
+                <div class="places-image">{{ place.image }}</div>
+              </td>
+              <td>
+                <div class="places-date">{{ place.date }}</div>
+              </td>
+              <td>
+                <table>
+                  <td>
+                    <button
+                      mat-raised-button
+                      class="btn-editar"
+                      (click)="openDialogEditPlace(i)"
+                    >
+                      Editar
+                    </button>
+                  </td>
+                  <td>
+                    <button mat-raised-button class="btn-ver">Ver</button>
+                  </td>
+                  <td>
+                    <button
+                      mat-raised-button
+                      color="warn"
+                      (click)="deletePlace(i)"
+                    >
+                      Eliminar
+                    </button>
+                  </td>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+
+      <ng-template #emptyPlaces>
+        <p class="no-places mt-4">
+          No hay establecimientos disponibles. Para crear uno, pulse el botón
+          'Crear establecimiento'.
+        </p>
+      </ng-template>
     </div>
   </div>
 </div>

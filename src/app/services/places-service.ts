@@ -22,7 +22,7 @@ export class PlacesService {
 
   addPlace(place: Place) {
     this.listPlaces.push(place);
-    this.firebaseService.uploadPlaces(this.listPlaces);
+    this.firebaseService.uploadPlaces(this.listPlaces, 1);
   }
 
   setPlaces(places: Place[]) {
@@ -47,7 +47,7 @@ export class PlacesService {
         if (result.dismissedByAction) {
           this.listPlaces.splice(id, 1);
           this.firebaseService.deletePlace(id);
-          //this.firebaseService.uploadPlaces(this.listPlaces);
+          this.firebaseService.uploadPlaces(this.listPlaces, 2);
         }
       });
   }
