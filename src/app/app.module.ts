@@ -28,6 +28,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NotifierService } from './services/notifier-service';
 import { NewPlaceComponent } from './components/places/new-place/new-place.component';
 import { EditPlaceComponent } from './components/places/edit-place/edit-place.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { EditPlaceComponent } from './components/places/edit-place/edit-place.co
     ViewNewsComponent,
     NewPlaceComponent,
     EditPlaceComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
