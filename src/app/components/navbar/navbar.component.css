@@ -1,6 +1,5 @@
 .navbar{
     background-color: #109B86;
-    border-radius: 10px;
 }
 
 .toolbar-content {
@@ -10,7 +9,7 @@
 }
 
 .logo {
-    width: 2%;
+    width: 3%;
     height: auto;
     margin-right: 2%;
 }
@@ -26,6 +25,6 @@
 
 .login{
     display: flex;
-  justify-content: flex-end;
-  align-items: center;
+    justify-content: flex-end;
+    align-items: center;
 }
