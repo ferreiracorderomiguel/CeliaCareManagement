@@ -23,3 +23,9 @@
 .link:hover {
     color: rgb(255, 187, 60);
 }
+
+.login{
+    display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

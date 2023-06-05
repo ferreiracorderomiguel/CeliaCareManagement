@@ -3,14 +3,20 @@ import { Router } from '@angular/router';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
+import { NotifierService } from './notifier-service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class LoginService {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private notifierService: NotifierService,
+    private cookieService: CookieService
+  ) {}
   token: string = '';
 
   login(email: string, password: string) {
-    firebase.auth().signOut();
+    //firebase.auth().signOut();
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -20,13 +26,29 @@ export class LoginService {
           .currentUser?.getIdToken()
           .then((token: string) => {
             this.token = token;
-            console.log('Usuario actual:', firebase.auth().currentUser?.email);
+            this.cookieService.set('token', this.token);
             this.router.navigate(['/home']);
           });
       });
   }
 
   getIdToken() {
-    return this.token;
+    //return this.token;
+    return this.cookieService.get('token');
+  }
+
+  logout() {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        this.token = '';
+        this.cookieService.set('token', this.token);
+        this.router.navigate(['/login']);
+        this.notifierService.showNotification(
+          'Sesión cerrada correctamente',
+          'Aceptar'
+        );
+      });
   }
 }

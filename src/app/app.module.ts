@@ -30,6 +30,7 @@ import { NewPlaceComponent } from './components/places/new-place/new-place.compo
 import { EditPlaceComponent } from './components/places/edit-place/edit-place.component';
 import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login-service';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { LoginService } from './services/login-service';
     FirebaseService,
     NotifierService,
     LoginService,
+    CookieService,
   ],
   bootstrap: [AppComponent],
 })
