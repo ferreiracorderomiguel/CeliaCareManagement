@@ -8,5 +8,11 @@
       <a mat-button [routerLink]="'/places'" class="link"> Establecimientos </a>
       <a mat-button [routerLink]="'/news'" class="link"> Noticias </a>
     </div>
+    <button mat-icon-button class="login-button" [routerLink]="'/login'">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button class="login-button" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
