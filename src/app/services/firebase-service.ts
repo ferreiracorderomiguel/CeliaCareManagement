@@ -17,7 +17,7 @@ export class FirebaseService {
     );
   }
 
-  uploadNews(newsArray: News[]) {
+  uploadNews(newsArray: News[], option: number) {
     this.httpClient
       .put(
         'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json',
@@ -25,16 +25,20 @@ export class FirebaseService {
       )
       .subscribe(
         (response) => {
-          this.notifierService.showNotification(
-            'Se ha subido la noticia a Firebase',
-            'Aceptar'
-          );
+          if (option == 1) {
+            this.notifierService.showNotification(
+              'Se ha subido la noticia a Firebase',
+              'Aceptar'
+            );
+          }
         },
         (error) => {
-          this.notifierService.showNotification(
-            'Error al subir la noticia a Firebase: ' + error,
-            'Aceptar'
-          );
+          if (option == 1) {
+            this.notifierService.showNotification(
+              'Error al subir la noticia a Firebase: ' + error,
+              'Aceptar'
+            );
+          }
         }
       );
   }
@@ -89,7 +93,7 @@ export class FirebaseService {
     );
   }
 
-  uploadPlaces(placesArray: any[]) {
+  uploadPlaces(placesArray: any[], option: number) {
     this.httpClient
       .put(
         'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json',
@@ -97,16 +101,20 @@ export class FirebaseService {
       )
       .subscribe(
         (response) => {
-          this.notifierService.showNotification(
-            'Se ha subido el establecimiento a Firebase',
-            'Aceptar'
-          );
+          if (option == 1) {
+            this.notifierService.showNotification(
+              'Se ha subido el establecimiento a Firebase',
+              'Aceptar'
+            );
+          }
         },
         (error) => {
-          this.notifierService.showNotification(
-            'Error al subir el establecimiento a Firebase: ' + error,
-            'Aceptar'
-          );
+          if (option == 1) {
+            this.notifierService.showNotification(
+              'Error al subir el establecimiento a Firebase: ' + error,
+              'Aceptar'
+            );
+          }
         }
       );
   }

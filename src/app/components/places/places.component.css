@@ -26,3 +26,8 @@
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
 }
+
+.no-places{
+  text-align: center;
+  font-size: 1.3em;
+}
