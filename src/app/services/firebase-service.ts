@@ -39,7 +39,7 @@ export class FirebaseService {
         (error) => {
           if (option == 1) {
             this.notifierService.showNotification(
-              'Error al subir la noticia a Firebase: ' + error,
+              'Error al subir la noticia a Firebase. Compruebe que está logueado.',
               'Aceptar'
             );
           }
@@ -62,7 +62,7 @@ export class FirebaseService {
       },
       (error) => {
         this.notifierService.showNotification(
-          'Error al actualizar la noticia en Firebase: ' + error,
+          'Error al actualizar la noticia en Firebase. Compruebe que está logueado.',
           'Aceptar'
         );
       }
@@ -84,7 +84,7 @@ export class FirebaseService {
       },
       (error) => {
         this.notifierService.showNotification(
-          'Error al eliminar la noticia de Firebase: ' + error,
+          'Error al eliminar la noticia de Firebase. Compruebe que está logueado.',
           'Aceptar'
         );
       }
@@ -115,7 +115,7 @@ export class FirebaseService {
         (error) => {
           if (option == 1) {
             this.notifierService.showNotification(
-              'Error al subir el establecimiento a Firebase: ' + error,
+              'Error al subir el establecimiento a Firebase. Compruebe que está logueado.',
               'Aceptar'
             );
           }
@@ -138,7 +138,7 @@ export class FirebaseService {
       },
       (error) => {
         this.notifierService.showNotification(
-          'Error al actualizar el establecimiento en Firebase: ' + error,
+          'Error al actualizar el establecimiento en Firebase. Compruebe que está logueado.',
           'Aceptar'
         );
       }
@@ -160,7 +160,7 @@ export class FirebaseService {
       },
       (error) => {
         this.notifierService.showNotification(
-          'Error al eliminar el establecimiento de Firebase: ' + error,
+          'Error al eliminar el establecimiento de Firebase. Compruebe que está logueado.',
           'Aceptar'
         );
       }
