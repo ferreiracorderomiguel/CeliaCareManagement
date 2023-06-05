@@ -44,7 +44,6 @@ export class LoginService {
       .then(() => {
         this.token = '';
         this.cookieService.set('token', this.token);
-        this.router.navigate(['/login']);
         this.notifierService.showNotification(
           'Sesión cerrada correctamente',
           'Aceptar'
