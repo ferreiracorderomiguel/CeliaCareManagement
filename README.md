@@ -1,27 +1,45 @@
-# Celiacaremanagement
+# CeliaCare Management
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+CeliaCare Management is an Angular and TypeScript project that allows CeliaCare admins to access the news and places databases using Firebase login. Read access is granted to all users, while edit access is restricted to logged-in users. The project utilizes Angular Material, Bootstrap, and ngx-cookies to maintain the user session even after closing the program. The purpose of this application is to serve as a data management tool for the CeliaCare Android application. This Angular project is specifically designed for viewing and modifying the data displayed in the CeliaCare mobile app.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Firebase login for authentication and authorization
+- Read access to the news and places databases for all users
+- Edit access to the databases restricted to logged-in users
+- Integration with Angular Material for enhanced UI components
+- Utilization of Bootstrap for responsive and mobile-friendly design
+- Integration of ngx-cookies for session persistence
 
-## Code scaffolding
+## Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Before running the project, make sure you have the following prerequisites installed:
 
-## Build
+- Node.js and npm
+- Angular CLI
+- Firebase account and project configuration
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting Started
 
-## Running unit tests
+1. Clone the repository: `git clone https://github.com/ferreiracorderomiguel/CeliaCareManagement.git`
+2. Navigate to the project directory: `cd celiacaremanagement`
+3. Install the dependencies: `npm install`
+4. Configure Firebase: Provide your Firebase project credentials in the appropriate configuration files.
+5. Run the project: `ng serve`
+6. Open your browser and navigate to `http://localhost:4200` to access the CeliaCare Management application.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Running end-to-end tests
+- Sign in with your Firebase credentials to gain access to edit functionality.
+- Navigate to the News and Places sections to view the respective databases.
+- Edit, add, or delete news and places entries as necessary.
+- Ensure to log out or close the browser tab to terminate the session and protect user privacy.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Technologies Used
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Angular
+- TypeScript
+- Firebase
+- Angular Material
+- Bootstrap
+- ngx-cookies
