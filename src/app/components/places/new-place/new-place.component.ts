@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { format } from 'date-fns';
 import { Place } from 'src/app/models/place';
+import { NotifierService } from 'src/app/services/notifier-service';
 import { PlacesService } from 'src/app/services/places-service';
 
 @Component({
@@ -19,21 +20,40 @@ export class NewPlaceComponent {
   constructor(
     public dialogRef: MatDialogRef<NewPlaceComponent>,
     @Inject(MAT_DIALOG_DATA) public modalTitle: String,
-    private placesService: PlacesService
+    private placesService: PlacesService,
+    private notifierService: NotifierService
   ) {}
 
   createPlace() {
-    this.getActualDate();
+    if (this.checkBlankSpaces()) {
+      this.getActualDate();
 
-    const newPlace = new Place(
-      this.name,
-      this.description,
-      this.image,
-      this.dateTimeString
-    );
-    this.placesService.addPlace(newPlace);
+      const newPlace = new Place(
+        this.name,
+        this.description,
+        this.image,
+        this.dateTimeString
+      );
+      this.placesService.addPlace(newPlace);
 
-    this.dialogRef.close(true);
+      this.dialogRef.close(true);
+    }
+  }
+
+  checkBlankSpaces() {
+    if (
+      this.name.trim() === '' ||
+      this.description.trim() === '' ||
+      this.image.trim() === ''
+    ) {
+      this.notifierService.showNotification(
+        'No puede haber campos vacíos',
+        'OK'
+      );
+      return false;
+    } else {
+      return true;
+    }
   }
 
   getActualDate() {

@@ -70,13 +70,13 @@ export class FirebaseService {
     this.httpClient.delete(url).subscribe(
       (response) => {
         this.notifierService.showNotification(
-          'Se ha eliminado la noticia en Firebase',
+          'Se ha eliminado la noticia de Firebase',
           'Aceptar'
         );
       },
       (error) => {
         this.notifierService.showNotification(
-          'Error al eliminar la noticia en Firebase: ' + error,
+          'Error al eliminar la noticia de Firebase: ' + error,
           'Aceptar'
         );
       }
@@ -142,13 +142,13 @@ export class FirebaseService {
     this.httpClient.delete(url).subscribe(
       (response) => {
         this.notifierService.showNotification(
-          'Se ha eliminado el establecimiento en Firebase',
+          'Se ha eliminado el establecimiento de Firebase',
           'Aceptar'
         );
       },
       (error) => {
         this.notifierService.showNotification(
-          'Error al eliminar el establecimiento en Firebase: ' + error,
+          'Error al eliminar el establecimiento de Firebase: ' + error,
           'Aceptar'
         );
       }

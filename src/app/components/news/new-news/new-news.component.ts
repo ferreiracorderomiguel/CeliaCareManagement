@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { format } from 'date-fns';
 import { News } from 'src/app/models/news';
 import { NewsService } from 'src/app/services/news-service';
+import { NotifierService } from 'src/app/services/notifier-service';
 
 @Component({
   selector: 'app-new-news',
@@ -19,22 +20,41 @@ export class NewNewsComponent {
   constructor(
     public dialogRef: MatDialogRef<NewNewsComponent>,
     @Inject(MAT_DIALOG_DATA) public modalTitle: String,
-    private newsService: NewsService
+    private newsService: NewsService,
+    private notifierService: NotifierService
   ) {}
 
   createNews() {
-    this.getActualDate();
+    if (this.checkBlankSpaces()) {
+      this.getActualDate();
 
-    const newNews = new News(
-      this.title,
-      this.description,
-      this.image,
-      this.dateTimeString
-    );
+      const newNews = new News(
+        this.title,
+        this.description,
+        this.image,
+        this.dateTimeString
+      );
 
-    this.newsService.addNews(newNews);
+      this.newsService.addNews(newNews);
 
-    this.dialogRef.close(true);
+      this.dialogRef.close(true);
+    }
+  }
+
+  checkBlankSpaces() {
+    if (
+      this.title.trim() === '' ||
+      this.description.trim() === '' ||
+      this.image.trim() === ''
+    ) {
+      this.notifierService.showNotification(
+        'No puede haber campos vacíos',
+        'OK'
+      );
+      return false;
+    } else {
+      return true;
+    }
   }
 
   getActualDate() {

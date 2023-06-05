@@ -2,15 +2,15 @@
 <div mat-dialog-content>
   <mat-form-field>
     <mat-label>Nombre del establecimiento</mat-label>
-    <input matInput [(ngModel)]="name" />
+    <input matInput [(ngModel)]="name" required />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Descripción del establecimiento</mat-label>
-    <textarea matInput [(ngModel)]="description"></textarea>
+    <textarea matInput [(ngModel)]="description" required></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Imagen</mat-label>
-    <input matInput [(ngModel)]="image" />
+    <input matInput [(ngModel)]="image" required />
   </mat-form-field>
 </div>
 

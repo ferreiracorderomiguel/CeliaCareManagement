@@ -1,20 +1,20 @@
-<div mat-dialog-title>{{modalTitle}}</div>
+<div mat-dialog-title>{{ modalTitle }}</div>
 <div mat-dialog-content>
   <mat-form-field>
     <mat-label>Título de la noticia</mat-label>
-    <input matInput [(ngModel)]="title">
+    <input matInput [(ngModel)]="title" required />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Contenido de la noticia</mat-label>
-    <textarea matInput [(ngModel)]="description"></textarea>
+    <textarea matInput [(ngModel)]="description" required></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Imagen</mat-label>
-    <input matInput [(ngModel)]="image">
+    <input matInput [(ngModel)]="image" required />
   </mat-form-field>
 </div>
 
 <div mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Cancelar</button>
-    <button mat-button (click)="createNews()">Crear</button>
+  <button mat-button (click)="closeDialog()">Cancelar</button>
+  <button mat-button (click)="createNews()">Crear</button>
 </div>
