@@ -39,10 +39,21 @@ export class PlacesComponent implements OnInit {
     });
   }
 
-  openDialogEditPlace(placeId: number) {
+  openDialogEditPlace(placeId: number, opc: number) {
+    let title = 'Editar establecimiento';
+    if (opc == 1) {
+      title = 'Editar establecimiento';
+    } else if (opc == 2) {
+      title = 'Ver establecimiento';
+    }
+
     const dialogRef = this.dialog.open(EditPlaceComponent, {
-      width: '500px',
-      data: { modalTitle: 'Editar establecimiento', placeId: placeId },
+      width: '600px',
+      data: {
+        modalTitle: title,
+        placeId: placeId,
+        opc: opc,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

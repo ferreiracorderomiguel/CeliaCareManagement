@@ -13,6 +13,7 @@ import { PlacesService } from 'src/app/services/places-service';
 export class EditPlaceComponent implements OnInit {
   modalTitle: string = '';
   placeId: number = 0;
+  opc: number = 1;
   name: string = '';
   description: string = '';
   image: string = '';
@@ -22,12 +23,13 @@ export class EditPlaceComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditPlaceComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { modalTitle: string; placeId: number },
+    public data: { modalTitle: string; placeId: number; opc: number },
     private placesService: PlacesService,
     private notifierService: NotifierService
   ) {
     this.modalTitle = data.modalTitle;
     this.placeId = data.placeId;
+    this.opc = data.opc;
   }
 
   ngOnInit(): void {

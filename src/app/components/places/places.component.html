@@ -45,13 +45,19 @@
                     <button
                       mat-raised-button
                       class="btn-editar"
-                      (click)="openDialogEditPlace(i)"
+                      (click)="openDialogEditPlace(i, 1)"
                     >
                       Editar
                     </button>
                   </td>
                   <td>
-                    <button mat-raised-button class="btn-ver">Ver</button>
+                    <button
+                      mat-raised-button
+                      class="btn-ver"
+                      (click)="openDialogEditPlace(i, 2)"
+                    >
+                      Ver
+                    </button>
                   </td>
                   <td>
                     <button
