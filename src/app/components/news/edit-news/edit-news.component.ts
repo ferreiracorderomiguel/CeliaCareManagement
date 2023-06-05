@@ -13,6 +13,7 @@ import { NotifierService } from 'src/app/services/notifier-service';
 export class EditNewsComponent implements OnInit {
   modalTitle: string = '';
   newsId: number = 0;
+  opc: number = 1;
   title: string = '';
   description: string = '';
   image: string = '';
@@ -22,12 +23,13 @@ export class EditNewsComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditNewsComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: { modalTitle: string; newsId: number },
+    public data: { modalTitle: string; newsId: number; opc: number },
     private newsService: NewsService,
     private notifierService: NotifierService
   ) {
     this.modalTitle = data.modalTitle;
     this.newsId = data.newsId;
+    this.opc = data.opc;
   }
 
   ngOnInit(): void {

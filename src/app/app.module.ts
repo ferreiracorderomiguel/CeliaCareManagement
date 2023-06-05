@@ -15,7 +15,6 @@ import { HomeComponent } from './components/home/home.component';
 import { MatCardModule } from '@angular/material/card';
 import { EditNewsComponent } from './components/news/edit-news/edit-news.component';
 import { NewNewsComponent } from './components/news/new-news/new-news.component';
-import { ViewNewsComponent } from './components/news/view-news/view-news.component';
 import { NewsService } from './services/news-service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -41,7 +40,6 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     EditNewsComponent,
     NewNewsComponent,
-    ViewNewsComponent,
     NewPlaceComponent,
     EditPlaceComponent,
     LoginComponent,

@@ -39,10 +39,17 @@ export class NewsComponent implements OnInit {
     });
   }
 
-  openDialogEditNews(newsId: number) {
+  openDialogEditNews(newsId: number, opc: number) {
+    let title = 'Editar noticia';
+    if (opc == 1) {
+      title = 'Editar noticia';
+    } else if (opc == 2) {
+      title = 'Ver noticia';
+    }
+
     const dialogRef = this.dialog.open(EditNewsComponent, {
-      width: '500px',
-      data: { modalTitle: 'Editar noticia', newsId: newsId },
+      width: '600px',
+      data: { modalTitle: title, newsId: newsId, opc: opc },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
