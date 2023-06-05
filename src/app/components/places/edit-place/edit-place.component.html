@@ -2,19 +2,25 @@
 <div mat-dialog-content>
   <mat-form-field>
     <mat-label>Nombre del establecimiento</mat-label>
-    <input matInput [(ngModel)]="name" required />
+    <input matInput [(ngModel)]="name" [readonly]="opc === 2" required />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Descripción del establecimiento</mat-label>
-    <textarea matInput [(ngModel)]="description" required></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="description"
+      [readonly]="opc === 2"
+      rows="8"
+      required
+    ></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Imagen</mat-label>
-    <input matInput [(ngModel)]="image" required />
+    <input matInput [(ngModel)]="image" [readonly]="opc === 2" required />
   </mat-form-field>
 </div>
 
 <div mat-dialog-actions>
   <button mat-button (click)="closeDialog()">Cancelar</button>
-  <button mat-button (click)="editPlace()">Editar</button>
+  <button mat-button (click)="editPlace()" *ngIf="opc !== 2">Editar</button>
 </div>
