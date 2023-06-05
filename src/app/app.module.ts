@@ -29,6 +29,7 @@ import { NotifierService } from './services/notifier-service';
 import { NewPlaceComponent } from './components/places/new-place/new-place.component';
 import { EditPlaceComponent } from './components/places/edit-place/edit-place.component';
 import { LoginComponent } from './components/login/login.component';
+import { LoginService } from './services/login-service';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,13 @@ import { LoginComponent } from './components/login/login.component';
     MatInputModule,
     MatSnackBarModule,
   ],
-  providers: [NewsService, PlacesService, FirebaseService, NotifierService],
+  providers: [
+    NewsService,
+    PlacesService,
+    FirebaseService,
+    NotifierService,
+    LoginService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
