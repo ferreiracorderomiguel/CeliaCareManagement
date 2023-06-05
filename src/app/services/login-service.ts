@@ -28,12 +28,15 @@ export class LoginService {
             this.token = token;
             this.cookieService.set('token', this.token);
             this.router.navigate(['/home']);
+            this.notifierService.showNotification(
+              'Sesión iniciada correctamente',
+              'Aceptar'
+            );
           });
       });
   }
 
   getIdToken() {
-    //return this.token;
     return this.cookieService.get('token');
   }
 

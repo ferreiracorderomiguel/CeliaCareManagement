@@ -22,9 +22,11 @@ export class FirebaseService {
   }
 
   uploadNews(newsArray: News[], option: number) {
+    const token = this.loginService.getIdToken();
     this.httpClient
       .put(
-        'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json',
+        'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news.json?auth=' +
+          token,
         newsArray
       )
       .subscribe(
@@ -48,10 +50,12 @@ export class FirebaseService {
   }
 
   updateNews(id: number, news: News) {
+    const token = this.loginService.getIdToken();
     let url =
       'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news/' +
       id +
-      '.json';
+      '.json?auth=' +
+      token;
 
     this.httpClient.put(url, news).subscribe(
       (response) => {
@@ -70,10 +74,12 @@ export class FirebaseService {
   }
 
   deleteNews(id: number) {
+    const token = this.loginService.getIdToken();
     let url =
       'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/news/' +
       id +
-      '.json';
+      '.json?auth=' +
+      token;
 
     this.httpClient.delete(url).subscribe(
       (response) => {
@@ -92,15 +98,19 @@ export class FirebaseService {
   }
 
   getPlaces() {
+    const token = this.loginService.getIdToken();
     return this.httpClient.get(
-      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json'
+      'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json?auth=' +
+        token
     );
   }
 
   uploadPlaces(placesArray: any[], option: number) {
+    const token = this.loginService.getIdToken();
     this.httpClient
       .put(
-        'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json',
+        'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places.json?auth=' +
+          token,
         placesArray
       )
       .subscribe(
@@ -124,10 +134,12 @@ export class FirebaseService {
   }
 
   updatePlace(id: number, place: Place) {
+    const token = this.loginService.getIdToken();
     let url =
       'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places/' +
       id +
-      '.json';
+      '.json?auth=' +
+      token;
 
     this.httpClient.put(url, place).subscribe(
       (response) => {
@@ -146,10 +158,12 @@ export class FirebaseService {
   }
 
   deletePlace(id: number) {
+    const token = this.loginService.getIdToken();
     let url =
       'https://celiacare-mfercor326v-default-rtdb.europe-west1.firebasedatabase.app/places/' +
       id +
-      '.json';
+      '.json?auth=' +
+      token;
 
     this.httpClient.delete(url).subscribe(
       (response) => {
