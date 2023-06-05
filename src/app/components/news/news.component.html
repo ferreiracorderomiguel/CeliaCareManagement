@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
   <div class="card">
     <div class="card-body">
       <div class="title-button-containers">
@@ -23,10 +23,18 @@
         </thead>
         <tbody>
           <tr *ngFor="let news of listNews; let i = index">
-            <td>{{ news.title }}</td>
-            <td>{{ news.description }}</td>
-            <td>{{ news.image }}</td>
-            <td>{{ news.date }}</td>
+            <td>
+              <div class="news-title">{{ news.title }}</div>
+            </td>
+            <td>
+              <div class="news-description">{{ news.description }}</div>
+            </td>
+            <td>
+              <div class="news-image">{{ news.image }}</div>
+            </td>
+            <td>
+              <div class="news-date">{{ news.date }}</div>
+            </td>
             <td>
               <table>
                 <td>
