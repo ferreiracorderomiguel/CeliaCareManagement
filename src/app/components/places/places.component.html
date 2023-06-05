@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
   <div class="card">
     <div class="card-body">
       <div class="title-button-containers">
@@ -26,10 +26,18 @@
         </thead>
         <tbody>
           <tr *ngFor="let place of listPlaces; let i = index">
-            <td>{{ place.name }}</td>
-            <td>{{ place.description }}</td>
-            <td>{{ place.image }}</td>
-            <td>{{ place.date }}</td>
+            <td>
+              <div class="places-name">{{ place.name }}</div>
+            </td>
+            <td>
+              <div class="places-description">{{ place.description }}</div>
+            </td>
+            <td>
+              <div class="places-image">{{ place.image }}</div>
+            </td>
+            <td>
+              <div class="places-date">{{ place.date }}</div>
+            </td>
             <td>
               <table>
                 <td>
