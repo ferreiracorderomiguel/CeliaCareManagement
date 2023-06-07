@@ -20,7 +20,9 @@
             <tr>
               <th>Nombre</th>
               <th>Descripción</th>
-              <th>Imagen</th>
+              <th>Dirección</th>
+              <th>Ciudad</th>
+              <th>Teléfono</th>
               <th>Fecha últ. actualización</th>
               <th>Acciones</th>
             </tr>
@@ -34,7 +36,15 @@
                 <div class="places-description">{{ place.description }}</div>
               </td>
               <td>
-                <div class="places-image">{{ place.image }}</div>
+                <div class="places-streetAddress">
+                  {{ place.streetAddress }}
+                </div>
+              </td>
+              <td>
+                <div class="places-city">{{ place.city }}</div>
+              </td>
+              <td>
+                <div class="places-phoneNumber">{{ place.phoneNumber }}</div>
               </td>
               <td>
                 <div class="places-date">{{ place.date }}</div>
