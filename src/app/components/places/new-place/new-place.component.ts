@@ -13,7 +13,10 @@ import { PlacesService } from 'src/app/services/places-service';
 export class NewPlaceComponent {
   name: string = '';
   description: string = '';
+  streetAddress: string = '';
+  city: string = '';
   image: string = '';
+  phoneNumber: string = '';
   currentDate: Date = new Date();
   dateTimeString: string = '';
 
@@ -31,7 +34,10 @@ export class NewPlaceComponent {
       const newPlace = new Place(
         this.name,
         this.description,
+        this.streetAddress,
+        this.city,
         this.image,
+        this.phoneNumber,
         this.dateTimeString
       );
       this.placesService.addPlace(newPlace);
@@ -44,7 +50,10 @@ export class NewPlaceComponent {
     if (
       this.name.trim() === '' ||
       this.description.trim() === '' ||
-      this.image.trim() === ''
+      this.image.trim() === '' ||
+      this.streetAddress.trim() === '' ||
+      this.city.trim() === '' ||
+      this.phoneNumber.trim() === ''
     ) {
       this.notifierService.showNotification(
         'No puede haber campos vacíos',

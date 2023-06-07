@@ -34,7 +34,10 @@ export class PlacesService {
 
     modifiedPlace.name = place.name;
     modifiedPlace.description = place.description;
+    modifiedPlace.streetAddress = place.streetAddress;
+    modifiedPlace.city = place.city;
     modifiedPlace.image = place.image;
+    modifiedPlace.phoneNumber = place.phoneNumber;
     modifiedPlace.date = place.date;
 
     this.firebaseService.updatePlace(id, modifiedPlace);

@@ -10,15 +10,14 @@
 
 .places-name,
 .places-description,
+.places-streetAddress,
+.places-city,
+.places-phoneNumber,
 .places-image,
 .places-date {
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
-}
-
-.places-name,
-.places-description {
   max-height: 3em;
   overflow: hidden;
   display: -webkit-box;
