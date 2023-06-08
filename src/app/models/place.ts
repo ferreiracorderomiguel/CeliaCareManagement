@@ -6,6 +6,7 @@ export class Place {
   image: string;
   phoneNumber: string;
   date: string;
+  coordinates: string;
 
   constructor(
     name: string,
@@ -14,7 +15,8 @@ export class Place {
     city: string,
     image: string,
     phoneNumber: string,
-    date: string
+    date: string,
+    coordinates: string
   ) {
     this.name = name;
     this.description = description;
@@ -23,5 +25,6 @@ export class Place {
     this.image = image;
     this.phoneNumber = phoneNumber;
     this.date = date;
+    this.coordinates = coordinates;
   }
 }

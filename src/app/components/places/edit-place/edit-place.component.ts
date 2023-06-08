@@ -20,6 +20,7 @@ export class EditPlaceComponent implements OnInit {
   city: string = '';
   image: string = '';
   phoneNumber: string = '';
+  coordinates: string = '';
   currentDate: Date = new Date();
   dateTimeString: string = '';
 
@@ -47,6 +48,7 @@ export class EditPlaceComponent implements OnInit {
     this.city = place.city;
     this.phoneNumber = place.phoneNumber;
     this.image = place.image;
+    this.coordinates = place.coordinates;
   }
 
   getPlaceById(placeId: number) {
@@ -64,7 +66,8 @@ export class EditPlaceComponent implements OnInit {
         this.city,
         this.image,
         this.phoneNumber,
-        this.dateTimeString
+        this.dateTimeString,
+        this.coordinates
       );
 
       this.placesService.updatePlace(this.placeId, newPlace);
@@ -80,7 +83,8 @@ export class EditPlaceComponent implements OnInit {
       this.image.trim() === '' ||
       this.streetAddress.trim() === '' ||
       this.city.trim() === '' ||
-      this.phoneNumber.trim() === ''
+      this.phoneNumber.trim() === '' ||
+      this.coordinates.trim() === ''
     ) {
       this.notifierService.showNotification(
         'No puede haber campos vacíos',
