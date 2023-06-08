@@ -14,6 +14,7 @@ export class NewNewsComponent {
   title: string = '';
   description: string = '';
   image: string = '';
+  source: string = '';
   currentDate: Date = new Date();
   dateTimeString: string = '';
 
@@ -32,7 +33,8 @@ export class NewNewsComponent {
         this.title,
         this.description,
         this.image,
-        this.dateTimeString
+        this.dateTimeString,
+        this.source
       );
 
       this.newsService.addNews(newNews);
@@ -45,7 +47,8 @@ export class NewNewsComponent {
     if (
       this.title.trim() === '' ||
       this.description.trim() === '' ||
-      this.image.trim() === ''
+      this.image.trim() === '' ||
+      this.source.trim() === ''
     ) {
       this.notifierService.showNotification(
         'No puede haber campos vacíos',

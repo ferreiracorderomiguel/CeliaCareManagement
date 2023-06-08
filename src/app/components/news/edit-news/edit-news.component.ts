@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { format } from 'date-fns';
+import { th } from 'date-fns/locale';
 import { News } from 'src/app/models/news';
 import { NewsService } from 'src/app/services/news-service';
 import { NotifierService } from 'src/app/services/notifier-service';
@@ -16,6 +17,7 @@ export class EditNewsComponent implements OnInit {
   opc: number = 1;
   title: string = '';
   description: string = '';
+  source: string = '';
   image: string = '';
   currentDate: Date = new Date();
   dateTimeString: string = '';
@@ -41,6 +43,7 @@ export class EditNewsComponent implements OnInit {
     this.title = news.title;
     this.description = news.description;
     this.image = news.image;
+    this.source = news.source;
   }
 
   getNewsById(newsId: number) {
@@ -55,7 +58,8 @@ export class EditNewsComponent implements OnInit {
         this.title,
         this.description,
         this.image,
-        this.dateTimeString
+        this.dateTimeString,
+        this.source
       );
 
       this.newsService.updateNews(this.newsId, newNews);
@@ -68,7 +72,8 @@ export class EditNewsComponent implements OnInit {
     if (
       this.title.trim() === '' ||
       this.description.trim() === '' ||
-      this.image.trim() === ''
+      this.image.trim() === '' ||
+      this.source.trim() === ''
     ) {
       this.notifierService.showNotification(
         'No puede haber campos vacíos',
