@@ -28,7 +28,7 @@ export class PlacesComponent implements OnInit {
 
   openDialogNewPlace() {
     const dialogRef = this.dialog.open(NewPlaceComponent, {
-      width: '500px',
+      width: '620px',
       data: 'Crear establecimiento',
     });
 
@@ -48,7 +48,7 @@ export class PlacesComponent implements OnInit {
     }
 
     const dialogRef = this.dialog.open(EditPlaceComponent, {
-      width: '600px',
+      width: '620px',
       data: {
         modalTitle: title,
         placeId: placeId,

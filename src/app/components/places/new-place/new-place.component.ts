@@ -17,6 +17,7 @@ export class NewPlaceComponent {
   city: string = '';
   image: string = '';
   phoneNumber: string = '';
+  coordinates: string = '';
   currentDate: Date = new Date();
   dateTimeString: string = '';
 
@@ -38,7 +39,8 @@ export class NewPlaceComponent {
         this.city,
         this.image,
         this.phoneNumber,
-        this.dateTimeString
+        this.dateTimeString,
+        this.coordinates
       );
       this.placesService.addPlace(newPlace);
 
@@ -53,7 +55,8 @@ export class NewPlaceComponent {
       this.image.trim() === '' ||
       this.streetAddress.trim() === '' ||
       this.city.trim() === '' ||
-      this.phoneNumber.trim() === ''
+      this.phoneNumber.trim() === '' ||
+      this.coordinates.trim() === ''
     ) {
       this.notifierService.showNotification(
         'No puede haber campos vacíos',
