@@ -36,6 +36,7 @@ export class NewsService {
     modifiedNews.description = news.description;
     modifiedNews.image = news.image;
     modifiedNews.date = news.date;
+    modifiedNews.source = news.source;
 
     this.firebaseService.updateNews(id, modifiedNews);
   }
