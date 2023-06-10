@@ -92,7 +92,15 @@ export class EditPlaceComponent implements OnInit {
       );
       return false;
     } else {
-      return true;
+      if (this.name.includes('.')) {
+        this.notifierService.showNotification(
+          'El nombre no puede contener puntos (.)',
+          'OK'
+        );
+        return false;
+      } else {
+        return true;
+      }
     }
   }
 
