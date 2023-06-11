@@ -28,7 +28,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let place of listPlaces; let i = index">
+            <tr *ngFor="let place of listPlaces.reverse(); let i = index">
               <td>
                 <div class="places-name">{{ place.name }}</div>
               </td>
