@@ -21,6 +21,7 @@ export class EditNewsComponent implements OnInit {
   image: string = '';
   currentDate: Date = new Date();
   dateTimeString: string = '';
+  selectedFile: any;
 
   constructor(
     public dialogRef: MatDialogRef<EditNewsComponent>,
@@ -36,6 +37,13 @@ export class EditNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadNewsData();
+  }
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile != null) {
+      console.log(this.selectedFile);
+    }
   }
 
   loadNewsData() {
