@@ -31,6 +31,7 @@ export class NewPlaceComponent {
   createPlace() {
     if (this.checkBlankSpaces()) {
       this.getActualDate();
+      this.getImageName();
 
       const newPlace = new Place(
         this.name,
@@ -52,7 +53,6 @@ export class NewPlaceComponent {
     if (
       this.name.trim() === '' ||
       this.description.trim() === '' ||
-      this.image.trim() === '' ||
       this.streetAddress.trim() === '' ||
       this.city.trim() === '' ||
       this.phoneNumber.trim() === '' ||
@@ -79,6 +79,20 @@ export class NewPlaceComponent {
   getActualDate() {
     const formattedDateTime = format(this.currentDate, 'dd/MM/yyyy HH:mm');
     this.dateTimeString = formattedDateTime;
+  }
+
+  getImageName() {
+    let imageName = this.name.trim();
+
+    imageName = imageName.replace(/\s+/g, '_');
+    imageName = imageName.toLowerCase();
+    imageName = imageName.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    imageName = imageName.replace(/¿|\?/g, '');
+    imageName = imageName.replace(/,/g, '');
+
+    imageName += '.png';
+
+    this.image = imageName;
   }
 
   closeDialog() {

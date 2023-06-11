@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { format } from 'date-fns';
+import { th } from 'date-fns/locale';
 import { Place } from 'src/app/models/place';
 import { NotifierService } from 'src/app/services/notifier-service';
 import { PlacesService } from 'src/app/services/places-service';
@@ -58,6 +59,7 @@ export class EditPlaceComponent implements OnInit {
   editPlace() {
     if (this.checkBlankSpaces()) {
       this.getActualDate();
+      this.getImageName();
 
       const newPlace = new Place(
         this.name,
@@ -80,7 +82,6 @@ export class EditPlaceComponent implements OnInit {
     if (
       this.name.trim() === '' ||
       this.description.trim() === '' ||
-      this.image.trim() === '' ||
       this.streetAddress.trim() === '' ||
       this.city.trim() === '' ||
       this.phoneNumber.trim() === '' ||
@@ -107,6 +108,20 @@ export class EditPlaceComponent implements OnInit {
   getActualDate() {
     const formattedDateTime = format(this.currentDate, 'dd/MM/yyyy HH:mm');
     this.dateTimeString = formattedDateTime;
+  }
+
+  getImageName() {
+    let imageName = this.name.trim();
+
+    imageName = imageName.replace(/\s+/g, '_');
+    imageName = imageName.toLowerCase();
+    imageName = imageName.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    imageName = imageName.replace(/¿|\?/g, '');
+    imageName = imageName.replace(/,/g, '');
+
+    imageName += '.png';
+
+    this.image = imageName;
   }
 
   closeDialog() {

@@ -38,7 +38,7 @@
     <mat-label>Número de télefono </mat-label>
     <input matInput [(ngModel)]="phoneNumber" [readonly]="opc === 2" required />
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field *ngIf="opc === 2">
     <mat-label>Imagen </mat-label>
     <input matInput [(ngModel)]="image" [readonly]="opc === 2" required />
   </mat-form-field>
