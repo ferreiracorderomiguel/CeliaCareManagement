@@ -12,6 +12,8 @@
     <mat-label>Fuente </mat-label>
     <textarea matInput [(ngModel)]="source" required></textarea>
   </mat-form-field>
+  <mat-label>Imagen </mat-label><br />
+  <input type="file" (change)="onFileSelected($event)" accept="image/png" />
 </div>
 
 <div mat-dialog-actions>

@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import { News } from 'src/app/models/news';
 import { NewsService } from 'src/app/services/news-service';
 import { NotifierService } from 'src/app/services/notifier-service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-new-news',
@@ -24,6 +25,17 @@ export class NewNewsComponent {
     private newsService: NewsService,
     private notifierService: NotifierService
   ) {}
+
+  async onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      /*const path = 'news/${this.title}';
+      const uploadtask = await this.fireStorage.upload(path, file);
+      const url = await uploadtask.ref.getDownloadURL();
+      console.log(url);*/
+      console.log(file);
+    }
+  }
 
   createNews() {
     if (this.checkBlankSpaces()) {
