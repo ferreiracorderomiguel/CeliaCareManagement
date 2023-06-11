@@ -42,8 +42,8 @@ export class EditNewsComponent implements OnInit {
     const news: News = this.getNewsById(this.newsId);
     this.title = news.title;
     this.description = news.description;
-    this.image = news.image;
     this.source = news.source;
+    this.image = news.image;
   }
 
   getNewsById(newsId: number) {
@@ -53,6 +53,7 @@ export class EditNewsComponent implements OnInit {
   editNews() {
     if (this.checkBlankSpaces()) {
       this.getActualDate();
+      this.getImageName();
 
       const newNews = new News(
         this.title,
@@ -72,7 +73,6 @@ export class EditNewsComponent implements OnInit {
     if (
       this.title.trim() === '' ||
       this.description.trim() === '' ||
-      this.image.trim() === '' ||
       this.source.trim() === ''
     ) {
       this.notifierService.showNotification(
@@ -88,6 +88,20 @@ export class EditNewsComponent implements OnInit {
   getActualDate() {
     const formattedDateTime = format(this.currentDate, 'dd/MM/yyyy HH:mm');
     this.dateTimeString = formattedDateTime;
+  }
+
+  getImageName() {
+    let imageName = this.title.trim();
+
+    imageName = imageName.replace(/\s+/g, '_');
+    imageName = imageName.toLowerCase();
+    imageName = imageName.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    imageName = imageName.replace(/¿|\?/g, '');
+    imageName = imageName.replace(/,/g, '');
+
+    imageName += '.png';
+
+    this.image = imageName;
   }
 
   closeDialog() {

@@ -28,6 +28,7 @@ export class NewNewsComponent {
   createNews() {
     if (this.checkBlankSpaces()) {
       this.getActualDate();
+      this.getImageName();
 
       const newNews = new News(
         this.title,
@@ -47,7 +48,6 @@ export class NewNewsComponent {
     if (
       this.title.trim() === '' ||
       this.description.trim() === '' ||
-      this.image.trim() === '' ||
       this.source.trim() === ''
     ) {
       this.notifierService.showNotification(
@@ -63,6 +63,20 @@ export class NewNewsComponent {
   getActualDate() {
     const formattedDateTime = format(this.currentDate, 'dd/MM/yyyy HH:mm');
     this.dateTimeString = formattedDateTime;
+  }
+
+  getImageName() {
+    let imageName = this.title.trim();
+
+    imageName = imageName.replace(/\s+/g, '_');
+    imageName = imageName.toLowerCase();
+    imageName = imageName.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    imageName = imageName.replace(/¿|\?/g, '');
+    imageName = imageName.replace(/,/g, '');
+
+    imageName += '.png';
+
+    this.image = imageName;
   }
 
   closeDialog() {
