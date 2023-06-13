@@ -5,14 +5,30 @@ import { NotifierService } from './notifier-service';
 import { Place } from '../models/place';
 import { LoginService } from './login-service';
 
+/**
+ * Represents the FirebaseService class.
+ * This service handles CRUD operations for news and places using Firebase as the backend.
+ */
 @Injectable()
 export class FirebaseService {
+  /**
+   * Creates an instance of the FirebaseService.
+   * @param {HttpClient} httpClient - The HttpClient used for making HTTP requests.
+   * @param {NotifierService} notifierService - The notifier service used for displaying notifications.
+   * @param {LoginService} loginService - The login service used for obtaining authentication tokens.
+   */
   constructor(
     private httpClient: HttpClient,
     private notifierService: NotifierService,
     private loginService: LoginService
   ) {}
 
+  /**
+   * Creates an instance of the FirebaseService.
+   * @param {HttpClient} httpClient - The HttpClient used for making HTTP requests.
+   * @param {NotifierService} notifierService - The notifier service used for displaying notifications.
+   * @param {LoginService} loginService - The login service used for obtaining authentication tokens.
+   */
   getNews() {
     const token = this.loginService.getIdToken();
     return this.httpClient.get(
@@ -21,6 +37,11 @@ export class FirebaseService {
     );
   }
 
+  /**
+   * Uploads news data to Firebase.
+   * @param {News[]} newsArray - An array of news objects to be uploaded.
+   * @param {number} option - The option value indicating the type of operation (1: Upload, 2: Update).
+   */
   uploadNews(newsArray: News[], option: number) {
     const token = this.loginService.getIdToken();
     this.httpClient
@@ -49,6 +70,11 @@ export class FirebaseService {
       );
   }
 
+  /**
+   * Updates a news entry in Firebase.
+   * @param {number} id - The ID of the news entry to be updated.
+   * @param {News} news - The updated news object.
+   */
   updateNews(id: number, news: News) {
     const token = this.loginService.getIdToken();
     let url =
@@ -73,6 +99,10 @@ export class FirebaseService {
     );
   }
 
+  /**
+   * Deletes a news entry from Firebase.
+   * @param {number} id - The ID of the news entry to be deleted.
+   */
   deleteNews(id: number) {
     const token = this.loginService.getIdToken();
     let url =
@@ -97,6 +127,10 @@ export class FirebaseService {
     );
   }
 
+  /**
+   * Retrieves place data from Firebase.
+   * @returns {Observable<any>} - An Observable that emits the place data from Firebase.
+   */
   getPlaces() {
     const token = this.loginService.getIdToken();
     return this.httpClient.get(
@@ -105,6 +139,11 @@ export class FirebaseService {
     );
   }
 
+  /**
+   * Uploads place data to Firebase.
+   * @param {any[]} placesArray - An array of place objects to be uploaded.
+   * @param {number} option - The option value indicating the type of operation (1: Upload, 2: Update).
+   */
   uploadPlaces(placesArray: any[], option: number) {
     const token = this.loginService.getIdToken();
     this.httpClient
@@ -133,6 +172,11 @@ export class FirebaseService {
       );
   }
 
+  /**
+   * Updates a place entry in Firebase.
+   * @param {number} id - The ID of the place entry to be updated.
+   * @param {Place} place - The updated place object.
+   */
   updatePlace(id: number, place: Place) {
     const token = this.loginService.getIdToken();
     let url =
@@ -157,6 +201,10 @@ export class FirebaseService {
     );
   }
 
+  /**
+   * Deletes a place entry from Firebase.
+   * @param {number} id - The ID of the place entry to be deleted.
+   */
   deletePlace(id: number) {
     const token = this.loginService.getIdToken();
     let url =
