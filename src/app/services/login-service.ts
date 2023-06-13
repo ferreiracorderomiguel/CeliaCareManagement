@@ -15,8 +15,12 @@ export class LoginService {
   ) {}
   token: string = '';
 
+  /**
+   * Logs in the user with the provided email and password.
+   * @param {string} email - The user's email address.
+   * @param {string} password - The user's password.
+   */
   login(email: string, password: string) {
-    //firebase.auth().signOut();
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -36,10 +40,17 @@ export class LoginService {
       });
   }
 
+  /**
+   * Retrieves the authentication token from the cookie.
+   * @returns {string} - The authentication token.
+   */
   getIdToken() {
     return this.cookieService.get('token');
   }
 
+  /**
+   * Logs out the user and clears the authentication token.
+   */
   logout() {
     firebase
       .auth()

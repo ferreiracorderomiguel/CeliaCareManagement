@@ -12,23 +12,44 @@ export class NewsService {
 
   listNews: News[] = [];
 
+  /**
+   * Retrieves the news from the Firebase service.
+   * @returns {Observable<any>} - The news data.
+   */
   getNews() {
     return this.firebaseService.getNews();
   }
 
+  /**
+   * Retrieves the news from the Firebase service.
+   * @returns {Observable<any>} - The news data.
+   */
   getNewsById(id: number) {
     return this.listNews[id];
   }
 
+  /**
+   * Adds a new news item to the list and uploads it to Firebase.
+   * @param {News} news - The news item to add.
+   */
   addNews(news: News) {
     this.listNews.push(news);
     this.firebaseService.uploadNews(this.listNews, 1);
   }
 
+  /**
+   * Sets the news list with the provided news data.
+   * @param {News[]} news - The news data to set.
+   */
   setNews(news: News[]) {
     this.listNews = news;
   }
 
+  /**
+   * Updates an existing news item in the list and Firebase.
+   * @param {number} id - The ID of the news item to update.
+   * @param {News} news - The updated news object.
+   */
   updateNews(id: number, news: News) {
     let modifiedNews = this.listNews[id];
 
@@ -41,6 +62,10 @@ export class NewsService {
     this.firebaseService.updateNews(id, modifiedNews);
   }
 
+  /**
+   * Deletes a news item from the list and Firebase.
+   * @param {number} id - The ID of the news item to delete.
+   */
   deleteNews(id: number) {
     this.notifierService
       .showConfirmation('¿Desea eliminar la noticia?', 'Aceptar')

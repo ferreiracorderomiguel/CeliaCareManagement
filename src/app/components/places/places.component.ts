@@ -10,15 +10,31 @@ import { EditPlaceComponent } from './edit-place/edit-place.component';
   templateUrl: './places.component.html',
   styleUrls: ['./places.component.css'],
 })
+
+/**
+ * Represents the PlacesComponent component.
+ */
 export class PlacesComponent implements OnInit {
   listPlaces: Place[] = [];
 
+  /**
+   * Creates an instance of the PlacesComponent.
+   * @param {MatDialog} dialog - Reference to the MatDialog service used for opening dialogs.
+   * @param {PlacesService} placesService - The places service used for CRUD operations.
+   */
   constructor(public dialog: MatDialog, private placesService: PlacesService) {}
 
+  /**
+   * Lifecycle hook that is called after data-bound properties of a directive are initialized.
+   * It retrieves the places from the places service.
+   */
   ngOnInit(): void {
     this.getPlaces();
   }
 
+  /**
+   * Retrieves the places from the places service and updates the list of places.
+   */
   getPlaces() {
     this.placesService.getPlaces().subscribe((places) => {
       this.listPlaces = Object.values(places);
@@ -26,6 +42,10 @@ export class PlacesComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens the dialog for creating a new place entry.
+   * After the dialog is closed, it refreshes the list of places if a new entry was created.
+   */
   openDialogNewPlace() {
     const dialogRef = this.dialog.open(NewPlaceComponent, {
       width: '620px',
@@ -39,6 +59,11 @@ export class PlacesComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens the dialog for editing or viewing a place entry.
+   * @param {number} placeId - The ID of the place entry.
+   * @param {number} opc - The operation code indicating whether it's an edit or view operation.
+   */
   openDialogEditPlace(placeId: number, opc: number) {
     let title = 'Editar establecimiento';
     if (opc == 1) {
@@ -63,6 +88,10 @@ export class PlacesComponent implements OnInit {
     });
   }
 
+  /**
+   * Deletes a place entry.
+   * @param {number} placeId - The ID of the place entry to be deleted.
+   */
   deletePlace(placeId: number) {
     this.placesService.deletePlace(placeId);
   }

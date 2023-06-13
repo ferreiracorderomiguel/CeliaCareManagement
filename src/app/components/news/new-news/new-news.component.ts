@@ -11,6 +11,10 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
   templateUrl: './new-news.component.html',
   styleUrls: ['./new-news.component.css'],
 })
+
+/**
+ * Represents the NewNewsComponent component.
+ */
 export class NewNewsComponent {
   title: string = '';
   description: string = '';
@@ -19,6 +23,13 @@ export class NewNewsComponent {
   currentDate: Date = new Date();
   dateTimeString: string = '';
 
+  /**
+   * Creates an instance of the NewNewsComponent.
+   * @param {MatDialogRef<NewNewsComponent>} dialogRef - Reference to the dialog opened.
+   * @param {MAT_DIALOG_DATA} modalTitle - The title of the dialog.
+   * @param {NewsService} newsService - The news service used for CRUD operations.
+   * @param {NotifierService} notifierService - The notifier service used for displaying notifications.
+   */
   constructor(
     public dialogRef: MatDialogRef<NewNewsComponent>,
     @Inject(MAT_DIALOG_DATA) public modalTitle: String,
@@ -26,6 +37,10 @@ export class NewNewsComponent {
     private notifierService: NotifierService
   ) {}
 
+  /**
+   * Event handler for when a file is selected.
+   * @param {any} event - The event object containing the selected file.
+   */
   async onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -37,6 +52,10 @@ export class NewNewsComponent {
     }
   }
 
+  /**
+   * Creates a new news entry.
+   * If there are no blank spaces in the required fields, creates the news entry and closes the dialog.
+   */
   createNews() {
     if (this.checkBlankSpaces()) {
       this.getActualDate();
@@ -56,6 +75,11 @@ export class NewNewsComponent {
     }
   }
 
+  /**
+   * Checks if there are any blank spaces in the required fields.
+   * If there are blank spaces, displays a notification.
+   * @returns {boolean} True if there are no blank spaces, false otherwise.
+   */
   checkBlankSpaces() {
     if (
       this.title.trim() === '' ||
@@ -72,11 +96,18 @@ export class NewNewsComponent {
     }
   }
 
+  /**
+   * Retrieves the current date and time and formats it.
+   */
   getActualDate() {
     const formattedDateTime = format(this.currentDate, 'dd/MM/yyyy HH:mm');
     this.dateTimeString = formattedDateTime;
   }
 
+  /**
+   * Generates the image name based on the news title.
+   * The name is formatted to remove any special characters and spaces.
+   */
   getImageName() {
     let imageName = this.title.trim();
 
@@ -91,6 +122,9 @@ export class NewNewsComponent {
     this.image = imageName;
   }
 
+  /**
+   * Closes the dialog without saving any changes.
+   */
   closeDialog() {
     this.dialogRef.close(false);
   }
