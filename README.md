@@ -35,6 +35,14 @@ Before running the project, make sure you have the following prerequisites insta
 - Edit, add, or delete news and places entries as necessary.
 - Ensure to log out or close the browser tab to terminate the session and protect user privacy.
 
+## Screenshots
+<div align="center">
+  <img src="app/src/main/res/drawable/home_page_demo.png" alt="Home screen" width="400px">
+</div>
+<div align="center">
+  <img src="app/src/main/res/drawable/home_page_demo.png" alt="Establishments screen" width="400px">
+</div>
+
 ## Technologies Used
 
 - Angular
