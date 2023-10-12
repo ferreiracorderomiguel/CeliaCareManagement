@@ -37,10 +37,10 @@ Before running the project, make sure you have the following prerequisites insta
 
 ## Screenshots
 <div align="center">
-  <img src="app/src/main/res/drawable/home_page_demo.png" alt="Home screen" width="400px">
+  <img src="app/src/assets/inicio_celiacaremanagement.jpg" alt="Home screen" width="400px">
 </div>
 <div align="center">
-  <img src="app/src/main/res/drawable/home_page_demo.png" alt="Establishments screen" width="400px">
+  <img src="src/assets/lista_establecimientos_celiacaremanagement.jpg" alt="Establishments screen" width="400px">
 </div>
 
 ## Technologies Used
