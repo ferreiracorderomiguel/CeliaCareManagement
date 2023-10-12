@@ -40,7 +40,7 @@ Before running the project, make sure you have the following prerequisites insta
   <img src="src/assets/inicio_celiacaremanagement.jpg" alt="Home screen" width="400px">
 </div>
 <div align="center">
-  <img src="src/assets/lista_establecimientos_celiacaremanagement.jpg" alt="Establishments screen" width="400px">
+  <img src="src/assets/lista_establecimientos_celiacaremagement.jpg" alt="Establishments screen" width="400px">
 </div>
 
 ## Technologies Used
